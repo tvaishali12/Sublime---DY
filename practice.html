@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//-------------------------------------------------------------------------
+// var elem = document.querySelectorAll("agn-anchor-tag.hydrated > a.header-subtabs");
+  var elem = document.querySelectorAll("agn-anchor-tag.hydrated > a");
+    elem.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        var menuInnerText = item.innerText;
+       console.log("inner", item.innerText);
+        dataLayer.push({
+          event: "navigation",
+          subheaderText: menuInnerText,
+          headerText :'',
+          
+        });
+      });
+    });
+
+//----------------------------------------------------------------------------
+// var param = document.querySelectorAll(".para1 , .para2"); // all elem having this class
+// for (let i = 0; i < param.length; i++) {
+//   param[i].style.color = "pink";
+// }
+
+//    document.querySelector(".dropdown-tab-content").addEventListener("click",function(){
+//         // console.log("vaishali rawat")
+//     })
+
+// var element = document.querySelector('[data-aegon-analytics-name="common | top_navigation_click | {&quot;eventAction&quot;: &quot;Learn&quot;, &quot;eventLabel&quot;: &quot;Blogs&quot;}"]');
+
+var menuItemparent = document.querySelectorAll('agn-anchor-tag.hydrated > a');
+for(let i = 0 ;i < menuItemparent.length; i++){
+    menuItemparent[i].addEventListener("click" , function(e){
+        var menuInnerText = menuItemparent[i].innerText;
+        dataLayer.push({
+      'event': "navigation",
+      'menuText': menuInnerText    
+    });
+    console.log("h",menuInnerText)
+    })
+};
+
+
+let heqaderElem = document.querySelectorAll('header-tabs__title');
+heqaderElem.forEach(function(item){
+item.addEventListener("click" ,function(){
+    console.log("vaishali Rawat")
+})
+})
+//-------------------------working fine for navigation tracking in Ageon life task-----------------------------------------------
+var headerInnerText; // Declare the variable outside the event listener
+
+var headerElem = document.querySelectorAll("div.header-tabs.customaziable-arrow > div.header-tabs__title");
+
+headerElem.forEach(function(item) {
+    item.addEventListener("mouseover", function(e) {
+        headerInnerText = item.innerText;
+        console.log("vaishali Rawat");
+    });
+});
+
+var elem = document.querySelectorAll("agn-anchor-tag.hydrated > a");
+
+elem.forEach(function(item) {
+    item.addEventListener("click", function(e) {
+        var menuInnerText = item.innerText;
+        console.log("inner", item.innerText);
+        dataLayer.push({
+            event: "navigation",
+            headerText: headerInnerText,
+            subheaderText: menuInnerText,
+           
+        });
+    });
+});
+
+</script>
+</html>
