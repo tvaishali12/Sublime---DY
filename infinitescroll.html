@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scrolling Page</title>
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NFP597WJ');</script>
+    <!-- End Google Tag Manager -->
+    <style>
+        body {
+            height: 200vh; /* Set the body height to simulate a long page */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #content {
+            padding: 20px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFP597WJ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+<div id="content">
+    <!-- Initial content goes here -->
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <!-- Add more items as needed -->
+</div>
+
+<script>
+    let itemCount = 3; // Initialize itemCount based on the existing items
+
+    window.addEventListener('scroll', function() {
+        // Check if the user has scrolled to the bottom
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            // Append new content when reaching the bottom
+            appendNewContent();
+        }
+    });
+
+    function appendNewContent() {
+        // Increment itemCount for the new item
+        itemCount++;
+
+        // Create a new item with a counting number
+        var newItem = document.createElement('div');
+        newItem.className = 'item';
+        newItem.textContent = 'Item ' + itemCount;
+
+        // Append the new item to the content container
+        document.getElementById('content').appendChild(newItem);
+    }
+
+
+    // var itemCount = 0;
+//--------------------------------------------------------------------
+function appendNewContent() {
+    // Increment itemCount for the new item
+    itemCount++;
+
+    // Create a new item with a counting number
+    var newItem = document.createElement('div');
+    newItem.className = 'item';
+    newItem.textContent = 'Item ' + itemCount;
+
+    // Append the new item to the content container
+    document.getElementById('content').appendChild(newItem);
+
+    // Check if itemCount is 600 and add an item with id "item2"
+    if (itemCount === 200) {
+        var newItem2 = document.createElement('div');
+        newItem2.id = 'item2';
+        newItem2.textContent = 'Special Item 2';
+
+        // Append the new item with id "item2" after item 600
+        document.getElementById('content').appendChild(newItem2);
+    }
+}
+
+// Detect when the end marker element becomes visible
+window.addEventListener('scroll', function() {
+  var item2Element = document.getElementById('item2');
+  
+  if (item2Element && isElementInViewport(item2Element)) {
+    // Trigger a custom event
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'reachedEndMarker'
+    });
+  }
+});
+
+// Function to check if an element is in the viewport
+// Function to check if an element is in the viewport
+function isElementInViewport(elementId) {
+  var el = document.getElementById(elementId);
+
+  if (!el) {
+    return false; // Return false if the element is not found
+  }
+
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.bottom >= window.innerHeight / 2
+  );
+}
+
+//--------------------------------------------------------------
+
+</script>
+</body>
+</html>
